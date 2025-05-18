@@ -42,13 +42,13 @@ export class Authservice{
     //Get current User
     async getcurruser(){
         try {
-            return await this.account.get();
-
-        } catch (error) {
-            throw error;
-        }
-
-        return null;
+    return await this.account.get();
+     } catch (error) {
+    if (error.code === 401) {
+      return null;
+    }
+    throw error; 
+  }
     }
 
     //Logout

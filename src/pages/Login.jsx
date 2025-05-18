@@ -1,6 +1,6 @@
 import React from 'react'
 import { Login } from '../components'
-const Login = () => {
+const Loginpage = () => {
   return (
     <div className='py-8'> 
       <Login/>
@@ -8,4 +8,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Loginpage
