@@ -30,6 +30,8 @@ function App() {
         <Header/>
         <main>
           {/* <Outlet/> */}
+          <Outlet />
+          Todo
         </main>
         <Footer/>
         </div> 

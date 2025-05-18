@@ -33,7 +33,7 @@ export class Authservice{
     //Login in existing account
     async login({email,password}){
         try {
-            return await this.account.createEmailSession(email,password);
+            return await this.account.createSession(email,password);
         } catch (error) {
             throw error;          
         }

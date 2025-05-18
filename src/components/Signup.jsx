@@ -11,7 +11,7 @@ const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, seterror] = useState("");
-  const { register, handlesubmit } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const create = async (data) => {
     seterror("");
@@ -50,7 +50,7 @@ const Signup = () => {
           </Link>
         </p>
         {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
-        <form onSubmit={handlesubmit(create)}>
+        <form onSubmit={handleSubmit(create)}>
           <div className="space-y-8">
             <Input
               label="name"
@@ -73,7 +73,7 @@ const Signup = () => {
             />
             <Input
             label="password"
-            type="passowrd"
+            type="password"
             placeholder="enter your password here.."
             {...register("password",{
                 required:true
