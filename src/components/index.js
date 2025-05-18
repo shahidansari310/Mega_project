@@ -8,5 +8,8 @@ import Input from "./Input";
 import { RTE } from "./RTE";
 import Select from "./Select"
 import Signup from "./Signup"
-
-export {RTE,Header,Footer,Signup,Select,Container,Logo,Logout,Button,Input}
+import PostCard from './PostCard'
+import Postform from '/Postform/Postform'
+import Login from "../pages/Login";
+ 
+export {RTE,Header,Footer,Signup,Select,Container,Logo,Logout,Button,Input,PostCard,Postform,Login}
