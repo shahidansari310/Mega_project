@@ -19,7 +19,7 @@ const Signup = () => {
       const userdata = await authservice.createAccount(data);
       if (userdata) {
         const userdata = await authservice.getcurruser();
-        if (userdata) dispatch(login(userdata));
+        if (userdata) dispatch(authLogin({ ...userdata, userId: userdata.$id }));
         navigate("/");
       }
     } catch (error) {

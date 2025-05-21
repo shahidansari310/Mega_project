@@ -13,7 +13,7 @@ const Home = () => {
         })
     },[])
 
-    if(post.length===0){
+    if(!post || post.length===0){
         return(
             <div className="w-full py-8 mt-4 text-center">
                 <Container>

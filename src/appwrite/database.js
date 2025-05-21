@@ -8,10 +8,10 @@ export class DatabaseService {
 
   constructor() {
     this.client.setEndpoint(conf.appwriteurl).setProject(conf.projectid);
-    this.datatbases = new Databases(this.client);
+    this.databases = new Databases(this.client);
     this.bucket = new Storage(this.client);
   }
-  async createPost({title,slug,content,featuredImage,status,userid}){
+  async createPost({title,slug,content,featuredImage,status,userId}){
     try {
         return await this.databases.createDocument(
             conf.dbid,
@@ -22,7 +22,7 @@ export class DatabaseService {
                 content,
                 featuredImage,
                 status,
-                userid
+                userId,
             }
         )
     } catch (error) {
@@ -30,7 +30,7 @@ export class DatabaseService {
     }
   }
 
-  async updatePost(slug ,{title,content,featuredImage,status,userid}){
+  async updatePost(slug ,{title,content,featuredImage,status,userId}){
     try {
         return await this.databases.updateDocument(
             conf.dbid,
@@ -41,6 +41,7 @@ export class DatabaseService {
                 content,
                 featuredImage,
                 status,
+                userId,
             }
         )
     } catch (error) {
@@ -64,18 +65,17 @@ export class DatabaseService {
 
   async getPost(slug){
     try {
-        await this.databases.getDocument(
+        return await this.databases.getDocument(
             conf.dbid,
             conf.collectionid,
             slug
-        )
-        return true        
+        )       
     } catch (error) {
         throw error
     }
   }
 
-  async getPosts(queries=[Query.equal["status","active"]]){
+  async getPosts(queries = [Query.equal("status", "active")]){
     try {
         await this.databases.listDocuments(
             conf.dbid,
@@ -93,7 +93,7 @@ export class DatabaseService {
   try {
     await this.bucket.createFile(
     conf.bucketid,
-    ID.unique,
+    ID.unique(),
     file
     )
     return true

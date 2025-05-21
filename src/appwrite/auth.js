@@ -14,15 +14,14 @@ export class Authservice{
 
 
     //Create a new user ID
-    async createAccount({email,password,name}){
+    async createAccount({email, password, name}) {
         try {
-            const useracc=await this.account.create(ID.unique(),email,password,name)
-            if(useracc){
-                return this.login({email,password})
-
-            }
-            else{
-                return useracc;
+            const userAccount = await this.account.create(ID.unique(), email, password, name);
+            if (userAccount) {
+                // call another method
+                return this.login({email, password});
+            } else {
+               return  userAccount;
             }
         } catch (error) {
             throw error;
@@ -30,10 +29,11 @@ export class Authservice{
     }
 
 
+
     //Login in existing account
     async login({email,password}){
         try {
-            return await this.account.createSession(email,password);
+            return await this.account.createEmailPasswordSession(email,password);
         } catch (error) {
             throw error;          
         }
